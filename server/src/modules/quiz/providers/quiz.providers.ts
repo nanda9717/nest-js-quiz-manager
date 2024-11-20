@@ -1,5 +1,5 @@
 import { DataSource } from 'typeorm';
-import { Quiz } from './quiz.entity';
+import { Quiz } from '../entities/quiz.entity';
 
 export const quizProviders = [
   {

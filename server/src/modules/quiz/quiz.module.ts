@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
-import { QuizController } from 'src/modules/quiz/quiz.controller';
-import { QuizService } from './quiz.service';
-import { quizProviders } from './quiz.providers';
+import { QuizController } from 'src/modules/quiz/controllers/quiz.controller';
+import { QuizService } from './services/quiz.service';
+import { quizProviders } from './providers/quiz.providers';
 import { DatabaseModule } from 'src/database/database.module';
-import { QuestionController } from './question.controller';
-import { QuestionService } from './question.service';
-import { questionProviders } from './question.providers';
+import { QuestionController } from './controllers/question.controller';
+import { QuestionService } from './services/question.service';
+import { questionProviders } from './providers/question.providers';
 
 @Module({
     imports: [DatabaseModule],
