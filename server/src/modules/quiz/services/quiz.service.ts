@@ -11,8 +11,20 @@ export class QuizService {
     private quizRepository: Repository<Quiz>,
   ){}
 
-  async getAllQuiz(){
-    return await this.quizRepository.find();
+  async getAllQuiz():Promise<Quiz[]>{
+    // By using join
+    const users = await this.quizRepository
+    .createQueryBuilder("q")
+    .leftJoinAndSelect("q.questions", "qt")
+    .leftJoinAndSelect("qt.options", "qo")
+    // .skip(1)
+    // .take(1)
+    .getMany();
+    //.getManyAndCount();
+    return users;
+
+    //return await this.quizRepository.find();
+
     // To get with questions
     //return await this.quizRepository.find({relations:{questions:true}});
   }
@@ -23,9 +35,14 @@ export class QuizService {
           id: id,
       },
       relations: {
-        questions: true,
+        questions: {
+          options: true
+        }
       }
-  });
+      // relations: {
+      //   questions: true,
+      // }
+    });
   }
 
   async createNewQuiz(quiz: CreateQuizDto){

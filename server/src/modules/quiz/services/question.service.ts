@@ -23,4 +23,24 @@ export class QuestionService {
     return newQuestion;
 
   }
+
+  async findQuestionById(id:number) {
+  //   return await this.questionRepository.findOne({
+  //     where: {
+  //         id: id,
+  //     },
+  //     relations:{
+  //       quiz: true
+  //     }
+  // });
+    return await this.questionRepository.findOne({
+        where: {
+            id: id,
+        },
+        relations:{
+            quiz: true,
+            options: true
+        }
+    });
+  }
 }
