@@ -3,10 +3,16 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { QuizModule } from './modules/quiz/quiz.module';
 import { DatabaseModule } from './database/database.module';
+import { UserModule } from './modules/user/user.module';
+import { AuthModule } from './modules/auth/auth.module';
+import { LocalStrategy } from './modules/auth/local.strategy';
+
 @Module({
   imports: [
     QuizModule,
-    DatabaseModule],
+    DatabaseModule,
+    UserModule,
+    AuthModule],
   controllers: [AppController],
   providers: [AppService],
 })
